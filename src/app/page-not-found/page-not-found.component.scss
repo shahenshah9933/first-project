@@ -1,0 +1,19 @@
+h1 {
+    font-weight: 900;
+    color: black;
+    font-size: 48px;  /* Adjust font size to make the "?" more visible */
+    display: inline-block;  /* Makes the text behave like a block for animation */
+    animation: animateQuestionMark 2s infinite;  /* Apply the animation */
+}
+
+@keyframes animateQuestionMark {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

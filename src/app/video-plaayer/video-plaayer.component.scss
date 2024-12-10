@@ -1,0 +1,104 @@
+/* Resetting styles */
+body, h1, h2, p, ul, li, textarea, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styling */
+header {
+    background-color: #04724D;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+/* Container styling */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Video styling */
+.video-container video {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Video details styling */
+.video-details h1 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.video-details p {
+    margin: 5px 0;
+}
+
+/* Engagement buttons */
+.engagement {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.buttons button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.like-btn {
+    background-color: #007BFF;
+    color: white;
+}
+
+.dislike-btn {
+    background-color: #FF4B4B;
+    color: white;
+}
+
+.share-btn {
+    background-color: #28A745;
+    color: white;
+}
+
+/* Comment section */
+.comment-section h2 {
+    margin-top: 20px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Suggested videos styling */
+.suggested-videos h2 {
+    margin-top: 20px;
+}
+
+.suggested-videos ul {
+    list-style: disc;
+    padding-left: 20px;
+}

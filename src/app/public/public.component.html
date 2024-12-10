@@ -1,0 +1,34 @@
+<header class="header">
+    <div class="title">My Video Gallery</div>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search" />
+        <button id="searchButton" type="submit">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+</header>
+
+<div class="main-content">
+    <nav class="sidebar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Trending</a></li>
+            <li><a href="#">Subscriptions</a></li>
+            <li><a href="#">Library</a></li>
+            <li><a href="#">History</a></li>
+            <li><a href="#">Your Videos</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div id="videoContainer" class="video-list">
+            <ul id="videoTableBody">
+                <!-- Video items will be injected here -->
+            </ul>
+        </div>
+
+        <div id="paginationContainer" class="pagination">
+            <div id="pagination"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,114 @@
+<div class="container mx-auto p-4 sm:p-6 lg:p-8 bg-white shadow-md rounded-lg">
+    <!-- Header Section -->
+    <header class="flex flex-col md:flex-row justify-between items-center mb-4 sm:mb-6">
+        <!-- Title -->
+        <h1 class="text-lg sm:text-xl md:text-2xl xl:text-3xl font-bold text-gray-800">Video Upload Dashboard</h1>
+        
+        <!-- Button Group -->
+        <div class="mt-4 md:mt-0 flex space-x-2">
+            <button (click)="onCreatePost()" class="bg-blue-500 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded hover:bg-blue-600 text-sm sm:text-base">Create Post</button>
+            <button (click)="onLogout()" class="bg-red-500 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded hover:bg-red-600 text-sm sm:text-base">Logout</button>
+        </div>
+    </header>
+    
+    <!-- Table Section -->
+    <table class="w-full table-auto border-collapse border border-gray-300">
+        <thead>
+            <tr class="bg-gray-200 text-gray-700">
+                <th class="border border-gray-300 px-2 sm:px-4 py-2">Thumbnail</th>
+                <th class="border border-gray-300 px-2 sm:px-4 py-2">Title</th>
+                <th class="border border-gray-300 px-2 sm:px-4 py-2">Created At</th>
+                <th class="border border-gray-300 px-2 sm:px-4 py-2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let video of videos">
+                <td class="border border-gray-300 px-2 sm:px-4 py-2">{{ video.thumbnail }}</td>
+                <td class="border border-gray-300 px-2 sm:px-4 py-2">{{ video.title }}</td>
+                <td class="border border-gray-300 px-2 sm:px-4 py-2">{{ video.createdAt }}</td>
+                <td class="border border-gray-300 px-2 sm:px-4 py-2">
+                    <button (click)="onEdit(video)" class="bg-green-500 text-white px-2 sm:px-3 py-1 sm:py-1.5 rounded hover:bg-green-600">Edit</button>
+                    <button (click)="onDelete(video)" class="bg-red-500 text-white px-2 sm:px-3 py-1 sm:py-1.5 rounded hover:bg-red-600">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Pagination Section -->
+    <div class="pagination mt-4 sm:mt-6 flex justify-center space-x-1 sm:space-x-2">
+        <button *ngFor="let page of pagination" (click)="onPageChange(page)" class="px-3 sm:px-4 py-1 sm:py-2 rounded bg-gray-200 hover:bg-gray-300">
+            {{ page }}
+        </button>
+    </div>
+</div>
+
+<!-- Modal Structure for Video Upload -->
+<div *ngIf="showUploadModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+    <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg w-full max-w-lg relative">
+        <span (click)="closeUploadModal()" class="absolute top-2 right-2 text-gray-500 text-xl sm:text-2xl cursor-pointer hover:text-gray-800">&times;</span>
+        <form (ngSubmit)="onVideoUpload()" #uploadForm="ngForm" class="space-y-3 sm:space-y-4">
+            <div>
+                <label for="title" class="block font-semibold text-gray-700">Video Title</label>
+                <input 
+                    type="text" 
+                    id="title" 
+                    name="title" 
+                    [(ngModel)]="newVideo.title" 
+                    required
+                    #title="ngModel" 
+                    class="w-full p-2 sm:p-3 border border-gray-300 rounded"
+                />
+                <div *ngIf="title.invalid && (title.dirty || title.touched)" class="text-red-500 text-sm">
+                    Title is required.
+                </div>
+            </div>
+            
+            <div>
+                <label for="description" class="block font-semibold text-gray-700">Description</label>
+                <textarea 
+                    id="description" 
+                    name="description" 
+                    [(ngModel)]="newVideo.description" 
+                    required
+                    #description="ngModel" 
+                    class="w-full p-2 sm:p-3 border border-gray-300 rounded"
+                ></textarea>
+                <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-red-500 text-sm">
+                    Description is required.
+                </div>
+            </div>
+
+            <div>
+                <label for="videoFile" class="block font-semibold text-gray-700">Upload Video:</label>
+                <input 
+                    type="file" 
+                    id="videoFile" 
+                    accept="video/*" 
+                    (change)="onFileSelect($event, 'video')" 
+                    class="w-full border border-gray-300 rounded p-2 sm:p-3" 
+                    required
+                />
+            </div>
+
+            <div>
+                <label for="thumbnailFile" class="block font-semibold text-gray-700">Upload Thumbnail:</label>
+                <input 
+                    type="file" 
+                    id="thumbnailFile" 
+                    accept="image/*" 
+                    (change)="onFileSelect($event, 'thumbnail')" 
+                    class="w-full border border-gray-300 rounded p-2 sm:p-3" 
+                    required
+                />
+            </div>
+
+            <button 
+                type="submit" 
+                [disabled]="uploadForm.invalid"
+                class="bg-green-500 text-white px-3 sm:px-4 py-2 rounded hover:bg-green-600 w-full mt-4"
+            >
+                Upload Video
+            </button>
+        </form>
+    </div>
+</div>

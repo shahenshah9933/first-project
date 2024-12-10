@@ -1,0 +1,62 @@
+/* app.component.scss */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .layout {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .aside {
+    width: 240px;
+    background-color: #212121;
+    color: white;
+    padding: 10px 0;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .aside nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .aside nav ul li {
+    margin: 10px 0;
+  }
+  
+  .aside nav ul li a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .aside nav ul li a i {
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  
+  .aside nav ul li a.active {
+    background-color: #373737;
+  }
+  
+  .aside nav ul li a:hover {
+    background-color: #424242;
+  }
+  
+  .content {
+    flex-grow: 1;
+    background-color: #f9f9f9;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
